@@ -15,17 +15,17 @@
 namespace westonrobot {
 ScoutBaseRos::ScoutBaseRos(std::string node_name)
     : rclcpp::Node(node_name), keep_running_(false) {
-  this->declare_parameter("port_name");
+  this->declare_parameter<std::string>("port_name", "can0");
 
-  this->declare_parameter("odom_frame");
-  this->declare_parameter("base_frame");
-  this->declare_parameter("odom_topic_name");
+  this->declare_parameter<std::string>("odom_frame");
+  this->declare_parameter<std::string>("base_frame");
+  this->declare_parameter<std::string>("odom_topic_name");
 
-  this->declare_parameter("is_scout_mini");
-  this->declare_parameter("is_omni_wheel");
+  this->declare_parameter<bool>("is_scout_mini");
+  this->declare_parameter<bool>("is_omni_wheel");
 
-  this->declare_parameter("simulated_robot");
-  this->declare_parameter("control_rate");
+  this->declare_parameter<bool>("simulated_robot");
+  this->declare_parameter<int>("control_rate");
 
   LoadParameters();
 }
